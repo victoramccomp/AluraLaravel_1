@@ -32,4 +32,21 @@ class ProdutosController extends Controller {
 
         return view('produto.detalhes')->with('produto', $produto[0]);
     }
+
+    public function adicionar() 
+    {
+        return view('produto.adicionar');
+    }
+
+    public function inserir() 
+    {
+        $nome = Request::input('nome');
+        $descricao = Request::input('descricao');
+        $valor = Request::input('valor');
+        $quantidade = Request::input('quantidade');
+        
+        DB::insert('INSERT INTO produtos VALUES (NULL, ?, ?, ?, ?)', array($nome, $valor, $descricao, $quantidade));
+
+        return view('produto.adicionado')->with('nome', $nome);;
+    }
 }

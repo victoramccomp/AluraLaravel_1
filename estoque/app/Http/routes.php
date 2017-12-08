@@ -22,3 +22,5 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/produtos', 'ProdutosController@lista');
 Route::get('/produtos/visualizar', 'ProdutosController@visualizar');
+Route::get('/produtos/adicionar', 'ProdutosController@adicionar');
+Route::post('/produtos/inserir', 'ProdutosController@inserir');
