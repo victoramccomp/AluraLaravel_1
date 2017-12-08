@@ -21,3 +21,4 @@ Route::get('/', 'WelcomeController@index');
 // ]);
 
 Route::get('/produtos', 'ProdutosController@lista');
+Route::get('/produtos/visualizar', 'ProdutosController@visualizar');
