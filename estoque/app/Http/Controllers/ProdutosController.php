@@ -5,11 +5,18 @@ use Request;
 
 class ProdutosController extends Controller {
     
-    public function lista() 
+    public function listar() 
     {
         $produtos = DB::select('SELECT * FROM produtos');
 
         return view('produto.listagem')->with('produtos', $produtos);
+    }
+
+    public function apiListar()
+    {
+        $produtos = DB::select('SELECT * FROM produtos');
+
+        return response()->json($produtos);
     }
 
     public function visualizar()
@@ -47,6 +54,6 @@ class ProdutosController extends Controller {
         
         DB::insert('INSERT INTO produtos VALUES (NULL, ?, ?, ?, ?)', array($nome, $valor, $descricao, $quantidade));
 
-        return view('produto.adicionado')->with('nome', $nome);;
+        return redirect()->action('ProdutosController@listar')->withInput(Request::only('nome'));
     }
 }

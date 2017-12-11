@@ -4,6 +4,12 @@
 
     <h1>Novo produto</h1>
 
+    @if(old('nome'))
+        <div class="alert alert-success">
+            <strong>Sucesso!</strong> O produto {{ old('nome') }} foi adicionado.
+        </div>
+    @endif
+
     <form action="/produtos/inserir" method="POST">
 
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
